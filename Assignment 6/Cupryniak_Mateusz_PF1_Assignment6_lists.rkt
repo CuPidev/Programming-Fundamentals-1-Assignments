@@ -24,8 +24,22 @@
 
 ;;;;; 2.1.3
 ;; min-list: List<Number> -> Number
-;; The function takes in a list of numbers and returns the smallest one of them
+;; The function takes in a non-empty list of numbers and returns the smallest one of them
 (define (min-list list2) 1)
+
+;;;;; 2.1.4
+;; 2min-list: List<Number> -> Number
+;; The function takes in a list with at least two numbers and returns the two smallest numbers
+
+
+;;;;; 2.1.5
+;; min-x: List<Posn> -> Posn
+;; The function takes in a list of posns and returns the posn with the smallest x value
+
+;;;;; 2.1.6
+;; self-powers: number -> List<Number>
+;; The function takes in a natural number n and returns a list of numbers from n to the nth power to 1^1.
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;; Section 2.2 - Programming with list abstractions ;;;;;;
