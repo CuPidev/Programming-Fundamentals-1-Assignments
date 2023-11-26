@@ -1,0 +1,138 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname assignment2_pf) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;--------------EX 1-------------
+;; Data type definition
+; Length - a non-negative Number describing length in either centimeters or inches.
+;--------------EX 2-------------
+;; Input/Output
+; inch->cm: Length -> Length
+
+;; The function is converting Length in inches to Length in centimeters.
+
+;; Header
+;(define (inch->cm length) 0)
+(define CONVERSION_FACTOR 2.54)
+
+;; Examples
+;1 inch -> 2.54 cm
+;5 inch -> 12.7 cm
+(check-expect (inch->cm 1) 2.54)
+(check-expect (inch->cm 5) 12.7)
+(check-expect (inch->cm 0) 0)
+
+;; Template
+;(define (inch->cm length)
+;  (... length ...))
+
+;; Implementation
+(define (inch->cm length)
+  (* length CONVERSION_FACTOR))
+
+;--------------EX 3-------------
+
+;; Data type definition
+; We only use numbers
+
+;; The functions takes 4 numbers and returns their average.
+
+;; Input/Output:
+; mean/4: number, number, number, number -> average
+
+;; Header
+;(define (mean/4 n1 n2 n3 n4) 0)
+
+;; Examples
+(check-expect (mean/4 1 1 1 1) 1)
+(check-expect (mean/4 4 8 16 4) 8)
+
+;; Template
+;(define (mean/4 n1 n2 n3 n4)
+;  (... n1 n2 n3 n4 ...))
+
+;; Implementation
+(define (mean/4 n1 n2 n3 n4)
+  (/ (+ n1 n2 n3 n4) 4))
+
+;--------------EX 4-------------
+
+;; Data type definition
+; We use only numbers
+
+;; Input/Output
+; area-triangle: number, number -> number
+
+;; Header
+;(define (area-triangle base_length height) 0)
+
+;; The function computes the area of a triangle based on given base length and height.
+
+;; Examples
+;base_length 1, height 2 -> area 1
+(check-expect (area-triangle 1 2) 1)
+
+;; Template
+;(define (area-triangle base_length height)
+;  (... base_length height ...))
+
+;; Implementation
+(define (area-triangle base_length height)
+  (* base_length height 1/2))
+
+;--------------EX 5-------------
+
+;; Data type definition
+; We use only built in Number type.
+
+;; Input/Output
+
+; perfect-square?: number -> boolean
+
+;; Header
+;(define (perfect-square? number) #true)
+
+;; The function checks if given number is a perfect square and returns boolean true if it is and false if it is not.
+
+;; Examples
+(check-expect (perfect-square? 4) #true)
+(check-expect (perfect-square? 8) #false)
+
+;; Template
+;(define (perfect-square? number)
+;  (... number ...))
+
+;; Implementation
+(define (perfect-square? number)
+  (integer? (sqrt number)))
+
+;--------------EX 6-------------
+
+;; Data type definition
+; Price_CHF - non-negative number that defines a price in Swiss Francs
+
+;--------------EX 7-------------
+
+;; Input/Output
+; final-price: Number -> Price_CHF
+
+;; Header
+; (define (final-price amount) 0)
+
+;; Function computes the total price in chf that needs to be paid for a given amoount of rolls.
+
+;; Examples
+(check-expect (final-price 6) (* 2 6))
+(check-expect (final-price 20) (* 1.8 20))
+(check-expect (final-price 21) (* 1.7 21))
+
+;; Template
+;(cond
+;  [()
+
+;; Implementation
+;--------------EX 8-------------
+;--------------EX 9-------------
+;--------------EX 10-------------
+
+
+
