@@ -6,21 +6,33 @@
 
 ;;;;;; 2.3.9 ;;;;;;;;;
 ;; Data type definition:
-;; Record - a data type containing any row of date from a CSV file consisting of field names and contents
+;; Record - a data type containing any row of date from a CSV file
+;; It consists of:
+;; - field name (string)
+;; - field value (any type)
+(define-struct record [field-name field-content])
+(define Jaca (make-record "name" "jaca"))
+(record-field-name Jaca)
+(record-field-content Jaca)
 
+;;;;;; 2.3.10 ;;;;;;;;;
 ;; get-field: Record String -> String
 ;; The function takes a field name and a Record and returnss the content of the field with the given name if it exists or #false if it does not exist.
 ;; (define (get-field field-name record) #false)
 
-;(check-expect (get-field "name" (make-record "name" "John" "age" "25")) "John")
+(check-expect (get-field "name" Jaca) "jaca")
 
-;;;;;; 2.3.10 ;;;;;;;;;
-
+(define (get-field field-name record)
+  (cond
+    [(string=? (record-field-name record) field-name) (record-field-content record)]
+    [else #false]))
 
 ;;;;;; 2.3.11 ;;;;;;;;;
+(define (read->record string-list) #false)
+
 
 ;;;;;; 2.3.12 ;;;;;;;;;
-
+(define (read-csv file-name) #true)
 
 ; (define (read-csv-file file-path)
 ;   (with-input-from-file file-path
