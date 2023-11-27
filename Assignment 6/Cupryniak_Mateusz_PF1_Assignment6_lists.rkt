@@ -12,16 +12,25 @@
 ;(check-expect (add-5 (list 1 2 3)) (list 1 7 8))
 ;(check-expect (add-5 (list -2 -2 0)) (list 3 3 5))
 
-(define (add-5 numery) (list (+ 5 (first numery)) (if (not (eq? (rest numery) '())) (add-5 (rest numery)) '()) ))
-(add-5 (cons 1 (cons 1 (cons 2 '()))))
+(define (add-5 numery) (list (+ 5 (first numery)) (if
+                                                   (not (eq? (rest numery) '()))
+                                                   (add-5 (rest numery))
+                                                   '()) ))
+(add-5 (list 2 3 4))
 
 ;;;;; 2.1.2
 ;; add-title: List<String> String -> List<String>
 ;; The function takes in a list of person names and a string representing a title and returns a list of the names with the title added as a prefix to every name
-;; (define (add-title list title) list)
-;(check-expect (add-title (list 1 2 3)) (list 1 7 8))
-;(check-expect (add-title (list -2 -2 0)) (list 3 3 5))
+;; (define (add-title name-list title) list)
+(check-expect (add-title (list "Matteo" "Francesco") "Dr.") (list "Dr. Matteo" "Dr. Francesco"))
 
+(define (add-title name-list title)
+  (list (string-append title " " (first name-list)) (if
+                                                     (not (eq? (rest name-list) '()))
+                                                     (add-title (rest name-list) title)
+                                                     '())))
+
+(add-title (list "Matteo" "Francesco") "Dr.")
 ;;;;; 2.1.3
 ;; min-list: List<Number> -> Number
 ;; The function takes in a non-empty list of numbers and returns the smallest one of them
