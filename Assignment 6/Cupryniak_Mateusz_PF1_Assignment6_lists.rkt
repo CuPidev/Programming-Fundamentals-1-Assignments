@@ -63,14 +63,20 @@
 ;; The function takes in a list of posns and returns the posn with the smallest x value
 ;; (define (min-x posn-list) (make-posn 1 1))
 
-;(check-expect (min-x (list (make-posn 1 2) (make-posn 2 3) (make-posn 3 4))) (make-posn 1 2))
+(check-expect (min-x (list (make-posn 1 2) (make-posn 2 3) (make-posn 3 4))) (make-posn 1 2))
 
 ;; Template
 ; define (mix-x list-posn)
 ;   (if (> (posn-x ...)) (posn-x ...) (min-x ...)))
 
-;(define (min-x posn-list)
-;l(if (> (posn-x (first posn-list)) (posn-x (first (rest posn-list)))) (first posn-list)     ))
+(define (min-x posn-list)
+  (cond
+    [(eq? (length posn-list) 1) (first posn-list)]
+    [(< (posn-x (first posn-list)) (posn-x (min-x (rest posn-list)))) (first posn-list)]
+    [else (min-x (rest posn-list))]))
+
+(min-x (list (make-posn 38 2) (make-posn 2100 3) (make-posn 222 4)))
+
 
 ;(min-x (list (make-posn 1 2) (make-posn 2 3) (make-posn 3 4)))
 ;;;;; 2.1.6
