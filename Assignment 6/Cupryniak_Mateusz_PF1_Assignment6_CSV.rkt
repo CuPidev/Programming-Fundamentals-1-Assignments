@@ -1,5 +1,7 @@
 #lang htdp/isl+
-
+(require racket/struct)
+(require 2htdp/batch-io)
+(require racket/string)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;; Section 2.3 - working with CSV files ;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -8,12 +10,16 @@
 ;; Data type definition:
 ;; Record - a data type containing any row of date from a CSV file
 ;; It consists of:
-;; - field name (string)
+;; - field name (String)
 ;; - field value (any type)
-(define-struct record [field-name field-content])
-(define Jaca (make-record "name" "jaca"))
-(record-field-name Jaca)
-(record-field-content Jaca)
+(define-struct record [field])
+(define Jaca (make-record (list (list "name" "jaca") (list "pogchamp" "test"))))
+(first (record-field Jaca))
+(first (rest (record-field Jaca)))
+
+
+
+
 
 ;;;;;; 2.3.10 ;;;;;;;;;
 ;; get-field: Record String -> String
@@ -24,11 +30,20 @@
 
 (define (get-field field-name record)
   (cond
-    [(string=? (record-field-name record) field-name) (record-field-content record)]
+    [(string=? (record-field record) field-name) (record-field record)]
     [else #false]))
 
 ;;;;;; 2.3.11 ;;;;;;;;;
-(define (read->record string-list) #false)
+
+;; list->record: List<String> List -> Record
+;; The function thkes a list of strings representing field names and a list of elements of any type representing field contents and returns a Record that pairs names and contents.
+;; (define (read->record string-list value-list) (make-record (car string-list) (car value-list)))
+
+
+;(define (list->record string-list value-list) (map make-record string-list value-list))
+
+;(list->record (list "name" "age") (list "jaca" 23))
+
 
 
 ;;;;;; 2.3.12 ;;;;;;;;;
