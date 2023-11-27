@@ -49,8 +49,15 @@
 ;;;;; 2.1.4
 ;; 2min-list: List<Number> -> Number
 ;; The function takes in a list with at least two numbers and returns the two smallest numbers
+;; (define (2min-list number-list) (list 1 2))
 
+(check-expect (2min-list (list 1 2 3)) (list 1 2))
+(check-expect (2min-list (list 3 2 2)) (list 2 2))
 
+(define (2min-list number-list)
+  (list (min-list number-list) (min-list (remove (min-list number-list) number-list))))
+
+(2min-list (list 100 2 5 4 8 1 19 200))
 ;;;;; 2.1.5
 ;; min-x: List<Posn> -> Posn
 ;; The function takes in a list of posns and returns the posn with the smallest x value
