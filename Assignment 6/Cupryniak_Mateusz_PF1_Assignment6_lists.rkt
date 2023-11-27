@@ -104,7 +104,26 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;; 2.2.7
-;; self-powers: number -> List<Number>
+;; add-5.v2: List<Number> -> List<Number>
+;; The function does the same thing as add-5 but uses map function instead of explicit recursion
+;; (define (add-5.v2 number-list) number-list)
+
+(check-expect (add-5.v2 (list 1 2 3)) (list 6 7 8))
+
+(define (add-5.v2 number-list)
+  (map (lambda (x) (+ x 5)) number-list))
+
+(add-5.v2 (list 1 2 3))
 
 ;;;;; 2.2.8
-;; self-powers: number -> List<Number>
+;; min-x.v2: List<Posn> -> Posn
+;; The function does the same thing as min-x but uses functional abstractions like map and filter and reuses min-list function from above.
+;; (define (min-x.v2 posn-list) (make-posn 1 1))
+
+(define (min-x.v2 posn-list)
+  (first (filter
+          (lambda (y) (eq? (posn-x y) (min-list (map (lambda (x) (posn-x x))posn-list)
+                                                ))) posn-list)))
+
+
+(min-x.v2 (list (make-posn 6 2) (make-posn 7 2) (make-posn 4 2)))
