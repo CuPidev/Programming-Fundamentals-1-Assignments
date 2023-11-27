@@ -39,8 +39,29 @@
 ;;;;; 2.1.6
 ;; self-powers: number -> List<Number>
 ;; The function takes in a natural number n and returns a list of numbers from n to the nth power to 1^1.
+;; (define (self-powers n) (list 1 2 3))
 
+(check-expect (self-powers 4) (list 256 27 4 1))
+(check-expect (self-powers 2) (list 4 1))
+(check-expect (self-powers 3) (list 27 4 1))
+(check-expect (self-powers 1) (list 1))
+
+;; Template
+; (define (self-powers n)
+;     (list ...))
+
+(define (self-powers n)
+  (list (expt n n) (if
+                    (not (eq? n 1))
+                    (self-powers (- n 1))
+                    '()) ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;; Section 2.2 - Programming with list abstractions ;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;; 2.2.7
+;; self-powers: number -> List<Number>
+
+;;;;; 2.2.8
+;; self-powers: number -> List<Number>
