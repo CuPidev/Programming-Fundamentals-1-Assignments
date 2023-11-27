@@ -120,6 +120,8 @@
 ;; The function does the same thing as min-x but uses functional abstractions like map and filter and reuses min-list function from above.
 ;; (define (min-x.v2 posn-list) (make-posn 1 1))
 
+(check-expect (min-x.v2 (list (make-posn 100 20) (make-posn 300 31111) (make-posn 50 313131))) (make-posn 50 313131))
+
 (define (min-x.v2 posn-list)
   (first (filter
           (lambda (y) (eq? (posn-x y) (min-list (map (lambda (x) (posn-x x))posn-list)
