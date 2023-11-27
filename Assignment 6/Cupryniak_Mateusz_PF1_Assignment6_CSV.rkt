@@ -9,16 +9,13 @@
 ;;;;;; 2.3.9 ;;;;;;;;;
 ;; Data type definition:
 ;; Record - a data type containing any row of date from a CSV file
-;; It consists of:
+;; It consists of an any number of fields each one of which is composed of:
 ;; - field name (String)
 ;; - field value (any type)
 (define-struct record [field])
 (define Jaca (make-record (list (list "name" "jaca") (list "pogchamp" "test"))))
 (first (record-field Jaca))
 (first (rest (record-field Jaca)))
-
-
-
 
 
 ;;;;;; 2.3.10 ;;;;;;;;;
