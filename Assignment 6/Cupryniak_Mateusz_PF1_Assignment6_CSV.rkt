@@ -26,10 +26,15 @@
 (check-expect (get-field "name" Jaca) "jaca")
 
 (define (get-field field-name record)
-  (cond
-    [(string=? (record-field record) field-name) (record-field record)]
-    [else #false]))
+  (local ((define answer (filter (lambda (x) (string=? (first x) field-name)) (record-field record))))
+    (cond
+      [(empty? answer) #false]
+      [else (second (first answer))])))
 
+
+(get-field "name" Jaca)
+(get-field "pogchamp" Jaca)
+(get-field "asdads" Jaca)
 ;;;;;; 2.3.11 ;;;;;;;;;
 
 ;; list->record: List<String> List -> Record
