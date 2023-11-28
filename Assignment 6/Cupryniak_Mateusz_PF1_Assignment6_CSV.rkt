@@ -42,25 +42,27 @@
 ;; (define (read->record string-list value-list) (make-record (car string-list) (car value-list)))
 
 
-;(define (list->record string-list value-list) (map make-record string-list value-list))
+(define (list->record string-list value-list)
+  (local ((define (helper string-list value-list)
+            (cond
+              [(empty? string-list) empty]
+              [else (cons (list (first string-list) (first value-list)) (helper (rest string-list) (rest value-list)))])))
+    (make-record (helper string-list value-list))))
+
+(list->record (list "name" "age") (list "jaca" 23))
 
 ;(list->record (list "name" "age") (list "jaca" 23))
 
 
 
 ;;;;;; 2.3.12 ;;;;;;;;;
-(define (read-csv file-name) #true)
 
-; (define (read-csv-file file-path)
-;   (with-input-from-file file-path
-;     (lambda ()
-;       (let loop ((lines (port->lines (current-input-port))))
-;         (if (null? lines)
-;             '()
-;             (cons (string-split (car lines) #",") (loop (cdr lines))))))))
+;; read-csv: String -> List<Record>
+;; The function takes a string representing the name of a CSV file and returns a list of Records from the CSV file.
+;; (define (read-csv file-name) (list (make-record 1 2)))
 
-; (define csv-data (read-csv-file "/path/to/your/csv/file.csv"))
+(define (read-csv file-name)
+  (local ((define header (string-split (first (read-lines file-name)) ",")))
+    (map (lambda (x) (list->record header (string-split x ","))) (rest (read-lines file-name)))))
 
-; (displayln csv-data)
-
-
+(read-csv "Assignment 6/flights.csv")
