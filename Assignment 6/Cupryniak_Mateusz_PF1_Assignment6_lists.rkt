@@ -16,7 +16,6 @@
                                                    (not (eq? (rest numery) '()))
                                                    (add-5 (rest numery))
                                                    '()) ))
-(add-5 (list 2 3 4))
 
 ;;;;; 2.1.2
 ;; add-title: List<String> String -> List<String>
@@ -30,7 +29,6 @@
                                                      (add-title (rest name-list) title)
                                                      '())))
 
-(add-title (list "Matteo" "Francesco") "Dr.")
 ;;;;; 2.1.3
 ;; min-list: List<Number> -> Number
 ;; The function takes in a non-empty list of numbers and returns the smallest one of them
@@ -45,7 +43,6 @@
     [(< (first number-list) (min-list (rest number-list)))  (first number-list)]
     [else (min-list (rest number-list))]))
 
-(min-list (list 100 2 5))
 ;;;;; 2.1.4
 ;; 2min-list: List<Number> -> Number
 ;; The function takes in a list with at least two numbers and returns the two smallest numbers
@@ -57,7 +54,6 @@
 (define (2min-list number-list)
   (list (min-list number-list) (min-list (remove (min-list number-list) number-list))))
 
-(2min-list (list 100 2 5 4 8 1 19 200))
 ;;;;; 2.1.5
 ;; min-x: List<Posn> -> Posn
 ;; The function takes in a list of posns and returns the posn with the smallest x value
@@ -74,9 +70,6 @@
     [(eq? (length posn-list) 1) (first posn-list)]
     [(< (posn-x (first posn-list)) (posn-x (min-x (rest posn-list)))) (first posn-list)]
     [else (min-x (rest posn-list))]))
-
-(min-x (list (make-posn 38 2) (make-posn 2100 3) (make-posn 222 4)))
-
 
 ;(min-x (list (make-posn 1 2) (make-posn 2 3) (make-posn 3 4)))
 ;;;;; 2.1.6
@@ -113,8 +106,6 @@
 (define (add-5.v2 number-list)
   (map (lambda (x) (+ x 5)) number-list))
 
-(add-5.v2 (list 1 2 3))
-
 ;;;;; 2.2.8
 ;; min-x.v2: List<Posn> -> Posn
 ;; The function does the same thing as min-x but uses functional abstractions like map and filter and reuses min-list function from above.
@@ -126,6 +117,3 @@
   (first (filter
           (lambda (y) (eq? (posn-x y) (min-list (map (lambda (x) (posn-x x))posn-list)
                                                 ))) posn-list)))
-
-
-(min-x.v2 (list (make-posn 6 2) (make-posn 7 2) (make-posn 4 2)))
