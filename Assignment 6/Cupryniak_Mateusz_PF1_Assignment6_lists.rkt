@@ -15,7 +15,7 @@
 
 ;; Template
 ; (define (add-5 numbers)
-;   (list  (...))
+;   (list  (...) (if ...)))
 
 (define (add-5 numbers) (list (+ 5 (first numbers)) (if
                                                      (not (eq? (rest numbers) '()))
@@ -31,7 +31,7 @@
 
 ;; Template
 ; (define (add-title name-list title)
-;   (list (string-append ...) ...))
+;   (list (string-append ...) (if ...))
 
 (define (add-title name-list title)
   (list (string-append title " " (first name-list)) (if
@@ -70,7 +70,7 @@
 
 ;; Template
 ; (define (2min-list number-list)
-;   (list (min-list number-list) ...))
+;   (list (min-list ...) ...))
 
 (define (2min-list number-list)
   (list (min-list number-list) (min-list (remove (min-list number-list) number-list))))
@@ -108,7 +108,7 @@
 
 ;; Template
 ; (define (self-powers n)
-;     (list ...))
+;     (list (...) (if ...))
 
 (define (self-powers n)
   (list (expt n n) (if
