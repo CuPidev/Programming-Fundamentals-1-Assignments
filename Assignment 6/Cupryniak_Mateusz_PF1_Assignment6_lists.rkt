@@ -31,7 +31,7 @@
 
 ;; Template
 ; (define (add-title name-list title)
-;   (list (string-append ...) (if ...))
+;   (list (string-append ...) (if ...)))
 
 (define (add-title name-list title)
   (list (string-append title " " (first name-list)) (if
@@ -108,7 +108,7 @@
 
 ;; Template
 ; (define (self-powers n)
-;     (list (...) (if ...))
+;     (list (...) (if ...)))
 
 (define (self-powers n)
   (list (expt n n) (if
@@ -129,7 +129,7 @@
 
 ;; Template
 ; (define (add-5.v2 number-list)
-;   (map (lambda (x) ... x ...) ...)
+;   (map (lambda (x) ... x ...) ...))
 
 (define (add-5.v2 number-list)
   (map (lambda (x) (+ x 5)) number-list))
@@ -143,7 +143,7 @@
 
 ;; Template
 ; (define (min-x.v2 posn-list)
-; (... (filter (lambda (x) ... x ...) ... )
+; (... (filter (lambda (x) ... x ...) ... ))
 
 (define (min-x.v2 posn-list)
   (first (filter
