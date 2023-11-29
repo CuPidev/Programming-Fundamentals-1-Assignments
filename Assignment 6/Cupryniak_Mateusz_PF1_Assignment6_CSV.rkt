@@ -13,10 +13,7 @@
 ;; - field name (String)
 ;; - field value (any type)
 (define-struct record [field])
-(define Jaca (make-record (list (list "name" "jaca") (list "pogchamp" "test"))))
-(first (record-field Jaca))
-(first (rest (record-field Jaca)))
-
+(define Jack (make-record (list (list "name" "Jack") (list "surname" "test") (list "age" 23) (list "birthplace" "Lugano") (list "occupation" "Banker"))))
 
 ;;;;;; 2.3.10 ;;;;;;;;;
 ;; get-field: Record String -> String
@@ -32,9 +29,11 @@
       [else (second (first answer))])))
 
 
-(get-field "name" Jaca)
-(get-field "pogchamp" Jaca)
-(get-field "asdads" Jaca)
+(get-field "name" Jack)
+(get-field "surname" Jack)
+(get-field "age" Jack)
+(string-append "The birthplace of " (get-field "name" Jack) " is " (get-field "birthplace" Jack))
+(get-field "occupation" Jack)
 ;;;;;; 2.3.11 ;;;;;;;;;
 
 ;; list->record: List<String> List -> Record
@@ -50,11 +49,6 @@
     (make-record (helper string-list value-list))))
 
 (list->record (list "name" "age") (list "jaca" 23))
-
-;(list->record (list "name" "age") (list "jaca" 23))
-
-
-
 ;;;;;; 2.3.12 ;;;;;;;;;
 
 ;; read-csv: String -> List<Record>
@@ -65,4 +59,4 @@
   (local ((define header (string-split (first (read-lines file-name)) ",")))
     (map (lambda (x) (list->record header (string-split x ","))) (rest (read-lines file-name)))))
 
-(read-csv "Assignment 6/flights.csv")
+;(read-csv "Assignment 6/flights.csv")
