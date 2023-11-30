@@ -26,6 +26,13 @@
 (check-expect (get-field "birthplace" Jack) "Lugano")
 (check-expect (get-field "occupation" Jack) "Banker")
 
+;; Template
+;; (define (get-field field-name record)
+;;   (local ...)
+;;   (cond
+;;     [(empty? ...) ...]
+;;     [else ...]))
+
 (define (get-field field-name record)
   (local ((define answer (filter (lambda (x) (string=? (first x) field-name)) (record-field record))))
     (cond
@@ -42,6 +49,14 @@
 ;; (define (read->record string-list value-list) (make-record (car string-list) (car value-list)))
 
 (check-expect (list->record (list "name" "age") (list "Francesco" 23)) (make-record (list "name" "Francesco") (list "age" 23)))
+
+;; Template
+;; (define (list->record string-list value-list)
+;;   (local ...)
+;;   (cond
+;;     [(empty? ...) ...]
+;;     [else ...])
+;;     (...)))
 
 (define (list->record string-list value-list)
   (local ((define (temp string-list value-list)
